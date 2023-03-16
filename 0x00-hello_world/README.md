@@ -40,3 +40,15 @@ This C program prints exactly with proper grammar, but the outcome is a piece of
 ## 6-size.c
 
 This C program prints the size of various types on the computer it is compiled and run on.
+
+## 100-intel
+
+This executable generates the assembly code (Intel syntax) of a C code and save it in an output file.
+
+## 101-quote.c
+
+This executable prints exactly and that piece of art is useful" - Dora Korpar, 2015-10-19, followed by a new line, to the standard error.
+
+You are not allowed to use any functions listed in the NAME section of the man (3) printf or man (3) puts
+- Your program should return 1
+- Your program should compile without any warnings when using the -Wall gcc option
