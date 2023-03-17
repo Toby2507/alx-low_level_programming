@@ -8,26 +8,22 @@
 int main(void)
 {
 	int i;
-	int j;
-	int k;
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 1000; i++)
 	{
-		for (j = 0; j < 10; j++)
+		int i1 = i / 100;
+		int i2 = (i % 100) / 10;
+		int i3 = i % 10;
+
+		if ((i1 < i2) && (i2 < i3))
 		{
-			for (k = 0; k < 10; k++)
+			putchar(i1 + '0');
+			putchar(i2 + '0');
+			putchar(i3 + '0');
+			if (i != 789)
 			{
-				if ((i < j) && (j < k))
-				{
-					putchar(i + '0');
-					putchar(j + '0');
-					putchar(k + '0');
-					if (i != 7 || j != 8 || k != 9)
-					{
-						putchar(',');
-						putchar(' ');
-					}
-				}
+				putchar(',');
+				putchar(' ');
 			}
 		}
 	}
