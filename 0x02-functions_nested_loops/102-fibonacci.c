@@ -27,8 +27,8 @@ int main(void)
 {
 	short i;
 
-	for (i = 1; i <= 50; i++)
-		if (i < 50)
+	for (i = 2; i <= 51; i++)
+		if (i < 51)
 			printf("%ld, ", fib(i));
 		else
 			printf("%ld", fib(i));
