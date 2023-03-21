@@ -18,24 +18,23 @@ void print_times_table(int n)
 	{
 		for (j = 0; j <= n; j++)
 		{
-			short x = i * j;
-			short x1 = x / 100;
-			short x2 = (x % 100) / 10;
-			short x3 = x % 10;
+			short x = i * j, short x1 = x / 100;
+			short x2 = (x % 100) / 10, short x3 = x % 10;
 
 			if (x1 > 0)
+			{
 				_putchar(x1 + '0');
-			else
-			{
-				if (j > 0)
-					_putchar(' ');
-			}
-			if (x2 > 0)
 				_putchar(x2 + '0');
+			}
 			else
 			{
 				if (j > 0)
 					_putchar(' ');
+				if (x2 > 0)
+					_putchar(x2 + '0');
+				else
+					if (j > 0)
+						_putchar(' ');
 			}
 			_putchar(x3 + '0');
 			if (j < n)
