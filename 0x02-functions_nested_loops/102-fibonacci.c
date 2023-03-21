@@ -6,9 +6,9 @@
  *
  * Return: All 50 computed fib numbers
  */
-long long int fib(int n)
+long int fib(int n)
 {
-	static long long int memo[50] = {0};
+	static long int memo[50] = {0};
 
 	if (n == 1 || n == 2)
 		return (1);
@@ -29,9 +29,9 @@ int main(void)
 
 	for (i = 1; i <= 50; i++)
 		if (i < 50)
-			printf("%lld, ", fib(i));
+			printf("%ld, ", fib(i));
 		else
-			printf("%lld", fib(i));
+			printf("%ld", fib(i));
 	printf("\n");
 	return (0);
 }
