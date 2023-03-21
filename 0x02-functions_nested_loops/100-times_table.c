@@ -18,8 +18,8 @@ void print_times_table(int n)
 	{
 		for (j = 0; j <= n; j++)
 		{
-			short x = i * j, short x1 = x / 100;
-			short x2 = (x % 100) / 10, short x3 = x % 10;
+			short x = i * j, x1 = x / 100;
+			short x2 = (x % 100) / 10, x3 = x % 10;
 
 			if (x1 > 0)
 			{
