@@ -12,7 +12,7 @@ int main(void)
 
 	long double a = 1, b = 2, c;
 
-	printf("%.0Lf, %.0LF, ", a, b);
+	printf("%.0Lf, %.0Lf, ", a, b);
 	for (i = 3; i <= 98; i++)
 	{
 		c = a + b;
