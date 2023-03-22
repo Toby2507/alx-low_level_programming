@@ -15,21 +15,11 @@ int main(void)
 	for (i = 3; i <= 98; i++)
 	{
 		c = a + b;
-		if (c < b)
-		{
-			unsigned long carry = a >> (sizeof(unsigned long) * 8 - 1);
-			printf("%lu, %lu, ", a, b);
-			a = b - carry;
-			b = c - carry;
-		}
-		else
-		{
-			printf("%lu", c);
-			if (i != 98)
-				printf(", ");
-			a = b;
-			b = c;
-		}
+		printf("%lu", c);
+		if (i != 98)
+			printf(", ");
+		a = b;
+		b = c;
 	}
 	printf("\n");
 	return (0);
