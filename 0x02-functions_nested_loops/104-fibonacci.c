@@ -8,21 +8,23 @@
  */
 int main(void)
 {
-	int a = 1, b = 2, c, i;
+	int i;
+	unsigned long a = 1, b = 2, c;
 
-	printf("%d, %d, ", a, b);
+	printf("%lu, %lu, ", a, b);
 	for (i = 3; i <= 98; i++)
 	{
-		if (b > (INT_MAX - a))
+		c = a + b;
+		if (c < b)
 		{
-			printf("%d, %d, ", a, b);
-			a = 1;
-			b = 2;
+			unsigned long carry = a >> (sizeof(unsigned long) * 8 - 1);
+			printf("%lu, %lu, ", a, b);
+			a = b - carry;
+			b = c - carry;
 		}
 		else
 		{
-			c = a + b;
-			printf("%d", c);
+			printf("%lu", c);
 			if (i != 98)
 				printf(", ");
 			a = b;
