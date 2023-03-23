@@ -1,23 +1,5 @@
 #include <stdio.h>
-#include <stdbool.h>
-
-/**
- * is_prime - Checks if a number is a prime number
- * @n: number to be checked
- *
- * Return: true if n is a prime number, otherwise false
- */
-bool is_prime(int n)
-{
-	int i;
-
-	if (n < 2)
-		return (false);
-	for (i = (n / 2); i >= 2; i--)
-		if (n % i == 0)
-			return (false);
-	return (true);
-}
+#include <math.h>
 
 /**
  * main - Prints the largest prime factor of 612852475143
@@ -26,16 +8,23 @@ bool is_prime(int n)
  */
 int main(void)
 {
-	long int i, num = 612852475143;
+	long int i, max = -1, num = 612852475143;
 
-	for (i = (num / 2); i >= 2; i--)
+	while (num % 2 == 0)
 	{
-		if (num % i == 0)
-			if (is_prime(i))
-			{
-				printf("%ld\n", i);
-				break;
-			}
+		max = 2;
+		num /= 2;
 	}
+	for (i = 3; i <= sqrt(num); i += 2)
+	{
+		while (num % i == 0)
+		{
+			max = i;
+			num /= i;
+		}
+	}
+	if (num > 2)
+		max = num;
+	printf("%ld\n", max);
 	return (0);
 }
