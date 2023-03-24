@@ -7,20 +7,16 @@
 void print_number(int n)
 {
 	int divisor = 1;
+	unsigned int num = n;
 
 	if (n < 0)
 	{
+		n *= -1;
 		_putchar('-');
-		n = -n;
+		num = n;
 	}
-	while (n / divisor >= 10)
-		divisor *= 10;
-	while (divisor > 0)
-	{
-		int c = n / divisor;
-
-		_putchar(c + '0');
-		n %= divisor;
-		divisor /= 10;
-	}
+	num /= 10;
+	if (num != 0)
+		print_number(num);
+	_putchar((unsigned int) n % 10 + '0');
 }
