@@ -14,10 +14,16 @@ char *rot13(char *s)
 	{
 		char c = s[i];
 
-		if (c >= 'A' && c <= 'Z')
-			s[i] = (((c - 'A') + 13) % 26) + 'A';
-		else if (c >= 'a' && c <= 'z')
+		while ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		{
+			if (c >= 'A' && c <= 'Z')
+			{
+				s[i] = (((c - 'A') + 13) % 26) + 'A';
+				break;
+			}
 			s[i] = (((c - 'a') + 13) % 26) + 'a';
+			break;
+		}
 		i++;
 	}
 	return (s);
