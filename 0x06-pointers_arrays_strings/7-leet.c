@@ -9,19 +9,19 @@
 char *leet(char *s)
 {
 	int i = 0;
+	char letter[] = {'A', 'E', 'O', 'T', 'L'};
+	char number[] = {'4', '3', '0', '7', '1'};
 
 	while (s[i])
 	{
-		if (s[i] == 'a' || s[i] == 'A')
-			s[i] = '4';
-		else if (s[i] == 'e' || s[i] == 'E')
-			s[i] = '3';
-		else if (s[i] == 'o' || s[i] == 'O')
-			s[i] = '0';
-		else if (s[i] == 't' || s[i] == 'T')
-			s[i] = '7';
-		else if (s[i] == 'l' || s[i] == 'L')
-			s[i] = '1';
+		int j = 0;
+
+		while (j < 5)
+		{
+			if (s[i] == letter[j] || (s[i] - 32) == letter[j])
+				s[i] = number[j];
+			j++;
+		}
 		i++;
 	}
 	return (s);
