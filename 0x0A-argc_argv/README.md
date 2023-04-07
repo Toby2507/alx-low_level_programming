@@ -19,3 +19,8 @@ This program multiplies 2 integers gotten as arguments to the program.
 ## 4-add.c
 
 This program adds positive numbers gotten as arguments to the program.
+
+## 100-change.c
+
+This program prints the minimum number of coins to make change for an amount of
+money.
