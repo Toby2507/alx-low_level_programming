@@ -12,6 +12,7 @@
 int main(int argc, char *argv[])
 {
 	int num, i = 0;
+
 	if (argc != 2)
 	{
 		puts("Error");
