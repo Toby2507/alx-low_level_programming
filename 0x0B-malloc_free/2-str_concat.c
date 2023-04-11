@@ -9,7 +9,7 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int tlen, i = 0, len1 = 0, len2 = 0;
+	int i = 0, len1 = 0, len2 = 0;
 	char *str = NULL;
 
 	if (!s1)
@@ -20,8 +20,7 @@ char *str_concat(char *s1, char *s2)
 		len1++;
 	while (s2[len2])
 		len2++;
-	tlen = len1 + len2;
-	str = !tlen ? malloc(1) : malloc((--tlen) * sizeof(char));
+	str = malloc((len1 + len2 + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	for (i = 0; i < len1; i++)
