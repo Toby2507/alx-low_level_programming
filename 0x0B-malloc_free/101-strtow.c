@@ -15,7 +15,7 @@ char **strtow(char *str)
 
 	if (!str || !cols)
 		return (NULL);
-	list = malloc(cols * sizeof(char *) + 1);
+	list = malloc((cols + 1) * sizeof(char *));
 	if (!list)
 		return (NULL);
 	for (i = 0; i < cols; i++)
