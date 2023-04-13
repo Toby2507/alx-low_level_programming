@@ -76,7 +76,7 @@ int _strlen(char *s)
 char *_realloc(char *ptr, unsigned int size)
 {
 	char *newptr;
-	unsigned int i, j;
+	unsigned int i;
 
 	newptr = malloc(size);
 	if (!newptr)
