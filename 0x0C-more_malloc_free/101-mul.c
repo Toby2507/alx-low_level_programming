@@ -3,6 +3,7 @@
 #include <stdlib.h>
 int _putchar(char);
 int _strlen(char *);
+char *_realloc(char *, unsigned int);
 void strrev(char *, int);
 char *stradd(char *, char *);
 char *strmul(char *, char, int, int);
@@ -66,6 +67,30 @@ int _strlen(char *s)
 }
 
 /**
+ * _realloc - increase the size of a memory block
+ * @ptr: memory block
+ * @size: new size
+ *
+ * Return: pointer to the new memory block
+ */
+char *_realloc(char *ptr, unsigned int size)
+{
+	char *newptr;
+	unsigned int i, j;
+
+	newptr = malloc(size);
+	if (!newptr)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	for (i = 0; i < size - 1; i++)
+		newptr[i] = ptr[i];
+	free(ptr);
+	return (newptr);
+}
+
+/**
  * strrev - reverses a string
  * @s: string
  * @n: size of string
@@ -106,7 +131,13 @@ char *stradd(char *s1, char *s2)
 	{
 		int sum = carry;
 
-		res = realloc(res, i + 2);
+		res = _realloc(res, i + 2);
+		if (!res)
+		{
+			free(s1);
+			free(s2);
+			err();
+		}
 		if (n1 > 0)
 			sum += s1[--n1] - '0';
 		if (n2 > 0)
@@ -136,13 +167,17 @@ char *strmul(char *s, char c, int n, int pad)
 	int carry = 0, i = 0, j = 0;
 
 	res = malloc(pad + 1);
+	if (!res)
+		err();
 	for (i = 0; i < pad; i++)
 		res[i] = '0';
 	while (n >= 0 || carry)
 	{
 		int mul = carry;
 
-		res = realloc(res, pad + j + 2);
+		res = _realloc(res, pad + j + 2);
+		if (!res)
+			err();
 		if (n >= 0)
 			mul += (s[n--] - '0') * (c - '0');
 		carry = mul / 10;
