@@ -31,7 +31,13 @@ int main(int argc, char **argv)
 	len2 = _strlen(s2) - 1;
 	for (i = len2; i >= 0; i--)
 		res = stradd(res, strmul(s1, s2[i], len1, j++));
-	print(res);
+	if (!atoi(res))
+	{
+		_putchar('0');
+		_putchar('\n');
+	}
+	else
+		print(res);
 	free(res);
 	return (0);
 }
