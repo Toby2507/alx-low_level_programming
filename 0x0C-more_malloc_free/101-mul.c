@@ -37,17 +37,6 @@ int main(int argc, char **argv)
 }
 
 /**
- * _putchar - prints a char to the stdout
- * @c: character
- *
- * Return: 0 (success), 1 (failure)
- */
-int _putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-/**
  * _strlen - computes the length of a string
  * @s: string
  *
