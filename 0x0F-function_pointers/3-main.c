@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	op = argv[2];
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
-	if (!strchr(ops, *op))
+	if (!strchr(ops, *op) || strlen(op) > 1)
 	{
 		puts("Error");
 		exit(99);
