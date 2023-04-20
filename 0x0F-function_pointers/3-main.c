@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 		puts("Error");
 		exit(99);
 	}
-	if ((strcmp(op, "/") || strcmp(op, "%")) && num2 == 0)
+	if ((strcmp(op, "/") == 0 || strcmp(op, "%") == 0) && num2 == 0)
 	{
 		puts("Error");
 		exit(100);
