@@ -43,3 +43,19 @@ This function inserts a new node at a given position.
 ## 10-delete_nodeint.c
 
 This function deletes the node at index index of a listint_t linked list.
+
+## 100-reverse_listint.c
+
+This function reverses a listint_t linked list.
+
+## 101-print_listint_safe.c
+
+This function prints a listint_t linked list.
+
+## 102-free_listint_safe.c
+
+This function frees a listint_t list.
+
+## 103-find_loop.c
+
+This function finds the loop in a linked list.
