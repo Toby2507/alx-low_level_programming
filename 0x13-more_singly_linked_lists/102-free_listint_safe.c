@@ -13,8 +13,8 @@ size_t free_listint_safe(listint_t **h)
 
 	if (!h || !(*h))
 		return (bytes);
-	node = *h;
-	while (node)
+	curr = *h;
+	while (curr)
 	{
 		next = curr->next;
 		free(curr);
