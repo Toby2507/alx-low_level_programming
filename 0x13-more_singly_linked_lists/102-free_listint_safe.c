@@ -13,12 +13,12 @@ size_t free_listint_safe(listint_t **h)
 
 	if (!h || !(*h))
 		return (bytes);
-	curr = *h;
-	while (curr)
+	node = *h;
+	while (node)
 	{
 		next = curr->next;
 		free(curr);
-		bytes += sizeof(listint_t);
+		bytes++;
 		if (next >= curr)
 		{
 			*h = NULL;
