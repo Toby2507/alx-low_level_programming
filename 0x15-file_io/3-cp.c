@@ -33,7 +33,7 @@ int main(int ac, char **av)
 			exit(99);
 		}
 		r_byte = read(fd_in, buffer, 1024);
-		output = open(av[2], O_WRONLY | O_APPEND);
+		fd_out = open(av[2], O_WRONLY | O_APPEND);
 	} while (r_byte > 0);
 	if (close(fd_in) == -1)
 	{
