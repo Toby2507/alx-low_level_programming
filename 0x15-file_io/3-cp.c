@@ -27,7 +27,7 @@ int main(int ac, char **av)
 	while ((r_byte = read(fd_in, buffer, 1024)) > 0)
 	{
 		w_byte = write(fd_out, buffer, r_byte);
-		if (w_byte != r_byte || w_byte == -1)
+		if (fd_out == -1 || w_byte != r_byte || w_byte == -1)
 		{
 			dprintf(2, "Error: Can't write to %s\n", av[2]);
 			exit(99);
@@ -41,10 +41,12 @@ int main(int ac, char **av)
 	if (close(fd_in) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", fd_in);
+		exit(100);
 	}
 	if (close(fd_out) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", fd_out);
+		exit(100);
 	}
 	return (0);
 }
