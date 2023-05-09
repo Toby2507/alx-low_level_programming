@@ -18,21 +18,21 @@ int main(int ac, char **av)
 		exit(97);
 	}
 	fd_in = open(av[1], O_RDONLY);
-	if (fd_in == -1)
-	{
-		dprintf(2, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
-	fd_out = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	while ((r_byte = read(fd_in, buffer, 1024)) > 0)
-	{
+	fd_out = open(av[2], O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
+	do {
+		r_byte = read(fd_in, buffer, 1024);
+		if (fd_in == -1 || r_byte == -1)
+		{
+			dprintf(2, "Error Can't read from file %s\n", av[1]);
+			exit(98);
+		}
 		w_byte = write(fd_out, buffer, r_byte);
-		if (w_byte != r_byte || w_byte == -1)
+		if (fd_out == -1 || w_byte == -1)
 		{
 			dprintf(2, "Error Can't write to %s\n", av[2]);
 			exit(99);
 		}
-	}
+	} while (r_byte > 0);
 	if (close(fd_in) == -1)
 	{
 		dprintf(2, "Error: Can't close fd %d\n", fd_in);
