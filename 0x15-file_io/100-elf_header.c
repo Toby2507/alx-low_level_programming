@@ -42,7 +42,6 @@ Elf64_Ehdr *read_elf_header(int fd)
 void print_elf_header(Elf64_Ehdr *elf_header)
 {
 	int i;
-	unsigned int e_point = (unsigned int)(elf_header->e_entry & 0xFFFFFFFF);
 
 	printf("ELF Header:\n");
 	printf("  Magic:   ");
@@ -79,9 +78,9 @@ void print_elf_header(Elf64_Ehdr *elf_header)
 			elf_header->e_type == ET_REL ? "REL (Relocatable file)" :
 			elf_header->e_type == ET_EXEC ? "EXEC (Executable file)" :
 			elf_header->e_type == ET_DYN ? "DYN (Shared object file)" :
-			elf_header->e_type == ET_CORE ? "CORE (Core file)" :
-			"unknown");
-	printf("  Entry point address:               %#x\n", e_point);
+			elf_header->e_type == ET_CORE ? "CORE (Core file)" : "unknown");
+	printf("  Entry point address:               %#x\n",
+			(unsigned int)(elf_header->e_entry & 0xFFFFFFFF));
 }
 
 /**
