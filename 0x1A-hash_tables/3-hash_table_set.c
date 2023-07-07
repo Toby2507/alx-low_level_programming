@@ -30,11 +30,6 @@ hash_node_t *create_item(const char *key, const char *value)
 
 	if (item == NULL)
 		return (NULL);
-	if (key == NULL || value == NULL || strlen(key) == 0)
-	{
-		free(item);
-		return (NULL);
-	}
 	item->key = strdup(key);
 	if (!item->key)
 	{
@@ -86,9 +81,14 @@ void handle_collision(hash_table_t *ht, unsigned long idx, hash_node_t *item)
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long idx = key_index((const unsigned char *)key, ht->size);
-	hash_node_t *item = create_item(key, value), *curr = ht->array[idx];
+	unsigned long idx;
+	hash_node_t *item, *curr;
 
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
+		return (0);
+	idx = key_index((const unsigned char *)key, ht->size);
+	curr = ht->array[idx];
+	item = create_item(key, value);
 	if (item == NULL)
 		return (0);
 	if (curr == NULL)
