@@ -36,7 +36,17 @@ hash_node_t *create_item(const char *key, const char *value)
 		return (NULL);
 	}
 	item->key = strdup(key);
+	if (!item->key)
+	{
+		free_item(item);
+		return (NULL);
+	}
 	item->value = strdup(value);
+	if (!item->value)
+	{
+		free_item(item);
+		return (NULL);
+	}
 	item->next = NULL;
 	return (item);
 }
