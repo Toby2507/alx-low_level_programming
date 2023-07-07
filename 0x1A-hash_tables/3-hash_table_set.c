@@ -6,11 +6,15 @@
  */
 void free_item(hash_node_t *item)
 {
-	if (item)
+	hash_node_t *next = NULL;
+
+	for (; item; item = next)
+	{
+		next = item->next;
 		free(item->key);
-	if (item)
 		free(item->value);
-	free(item);
+		free(item);
+	}
 }
 
 /**
