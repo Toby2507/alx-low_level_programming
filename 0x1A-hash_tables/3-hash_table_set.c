@@ -65,7 +65,8 @@ void handle_collision(hash_table_t *ht, unsigned long idx, hash_node_t *item)
 		curr = curr->next;
 	if (strcmp(curr->key, item->key) == 0)
 	{
-		strcpy(curr->value, item->value);
+		free(curr->value);
+		curr->value = strdup(item->value);
 		free_item(item);
 	}
 	else
@@ -92,7 +93,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	else if (strcmp(curr->key, key) == 0)
 	{
 		free_item(item);
-		strcpy(ht->array[idx]->value, value);
+		free(curr->value);
+		ht->array[idx]->value = strdup(value);
 	}
 	else
 		handle_collision(ht, idx, item);
