@@ -30,7 +30,7 @@ hash_node_t *create_item(const char *key, const char *value)
 
 	if (item == NULL)
 		return (NULL);
-	if (strlen(key) == 0)
+	if (key == NULL || value == NULL || strlen(key) == 0)
 	{
 		free(item);
 		return (NULL);
@@ -61,16 +61,19 @@ void handle_collision(hash_table_t *ht, unsigned long idx, hash_node_t *item)
 {
 	hash_node_t *curr = ht->array[idx];
 
-	while (curr->next && strcmp(curr->key, item->key))
-		curr = curr->next;
-	if (strcmp(curr->key, item->key) == 0)
+	while (curr)
 	{
-		free(curr->value);
-		curr->value = strdup(item->value);
-		free_item(item);
+		if (strcmp(curr->key, item->key) == 0)
+		{
+			free(curr->value);
+			curr->value = strdup(item->value);
+			free_item(item);
+			return;
+		}
+		curr = curr->next;
 	}
-	else
-		curr->next = item;
+	item->next = ht->array[idx];
+	ht->array[idx] = item;
 }
 
 /**
